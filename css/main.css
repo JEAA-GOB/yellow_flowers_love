@@ -30,8 +30,6 @@ body {
   font-weight: bold;
   letter-spacing: 4px;
 }
-
-
 @media only screen and (max-width: 600px) {
   /* Estilos específicos para dispositivos con un ancho máximo de 600px */
   #lyrics {
@@ -41,7 +39,6 @@ body {
   }
 
 }
-
 .titulo {
   margin-bottom: 180px;
   font-family: "Arial Narrow", Arial, sans-serif;
@@ -53,7 +50,6 @@ body {
   animation: fadeIn 3s ease-in-out forwards;
   text-align: center;
 }
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -1661,83 +1657,3 @@ h1 {
 }
 
 /* Agregar más estilos según sea necesario */
-
-
-
-
-
-/* ESTILOS PARA EL BOTÓN DE AUDIO */
-.audio-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: 2px solid #fff;
-    transition: all 0.3s ease;
-    color: white;
-    font-size: 24px;
-}
-
-.audio-btn:hover {
-    transform: scale(1.1);
-    background: rgba(0, 0, 0, 0.9);
-}
-
-/* BOTÓN DE VOLVER */
-.back-button {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: 1px solid white;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    font-size: 14px;
-    backdrop-filter: blur(10px);
-}
-
-.back-button:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
-}
-
-/* Animación para ocultar título */
-@keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-/* RESPONSIVE */
-@media only screen and (max-width: 768px) {
-    .audio-btn {
-        width: 45px;
-        height: 45px;
-        top: 15px;
-        right: 15px;
-        font-size: 20px;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    .audio-btn {
-        width: 40px;
-        height: 40px;
-        top: 10px;
-        right: 10px;
-        font-size: 18px;
-    }
-}
