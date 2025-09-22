@@ -9,7 +9,7 @@
     <title>Flower</title>
   </head>
   <body class="container">
-    <audio id="audio" src="sound/ChristianBasso&HaienQiu-Flowers.mp3" autoplay loop></audio>
+    <audio src="sound/ChristianBasso&HaienQiu-Flowers.mp3" autoplay></audio>
     <div id="lyrics">
      
     </div>
@@ -328,14 +328,5 @@
     </div>
     <script src="anim.js"></script>
     <script src="main.js"></script>
-    <script>
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('play') === 'true') {
-          const audio = document.getElementById('audio');
-          audio.play().catch(() => {
-              alert('El navegador bloqueó la reproducción automática.');
-          });
-      }
-    </script>
   </body>
 </html>
