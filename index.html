@@ -5,36 +5,361 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
     <link rel="icon" href="img/flowers.png" type="image/x-icon">
-    <title>Flowers</title>
+    <title>Para Ti 💛</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                    radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 40%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+            animation: sparkle 8s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        .container-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 3rem 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            overflow: visible;
+        }
+
+        .romantic-header {
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .greetings-container {
+            position: relative;
+            min-height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .greetings {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+            font-size: 5rem;
+            background: linear-gradient(45deg, #FFD700, #FFEC8B, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            position: relative;
+            z-index: 10;
+            display: inline-block;
+            padding: 0 10px;
+        }
+
+        .greetings-cursor {
+            display: inline-block;
+            width: 4px;
+            height: 1.2em;
+            background: #FFD700;
+            margin-left: 5px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 2.5s forwards;
+        }
+
+        .message-box {
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 4px solid #FFD700;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            text-align: left;
+            opacity: 0;
+            animation: fadeInUp 1s ease 3s forwards;
+        }
+
+        .message-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        .message-text .highlight {
+            color: #FFD700;
+            font-weight: 600;
+        }
+
+        .description {
+            font-size: 1.3rem;
+            margin: 2rem 0;
+            color: #b0b0b0;
+            opacity: 0;
+            animation: fadeInUp 1s ease 3.5s forwards;
+        }
+
+        .btn-romantic {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a1a2e;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 1s ease 4s forwards;
+            cursor: pointer;
+        }
+
+        .btn-romantic::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-romantic:hover::before {
+            left: 100%;
+        }
+
+        .btn-romantic:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+        }
+
+        .flower-decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            opacity: 0.1;
+            z-index: 1;
+            font-size: 4rem;
+        }
+
+        .flower-1 {
+            top: 10%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .flower-2 {
+            bottom: 10%;
+            right: 10%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .flower-3 {
+            top: 20%;
+            right: 15%;
+            animation: float 7s ease-in-out infinite 1s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container-card {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+
+            .greetings {
+                font-size: 3.5rem;
+            }
+
+            .greetings-container {
+                min-height: 90px;
+            }
+
+            .subtitle {
+                font-size: 1.7rem;
+            }
+
+            .description {
+                font-size: 1.1rem;
+            }
+
+            .btn-romantic {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+
+            .flower-decoration {
+                width: 60px;
+                height: 60px;
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .greetings {
+                font-size: 2.8rem;
+            }
+
+            .greetings-container {
+                min-height: 70px;
+            }
+
+            .subtitle {
+                font-size: 1.4rem;
+            }
+
+            .message-text {
+                font-size: 1rem;
+            }
+
+            .description {
+                font-size: 1rem;
+            }
+
+            .btn-romantic {
+                padding: 10px 25px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="greetings">
-        <span>H</span>
-        <span>o</span>
-        <span>l</span>
-        <span>a</span>
-        <span>!</span>
+<!-- Decoraciones de flores -->
+<div class="flower-decoration flower-1">🌼</div>
+<div class="flower-decoration flower-2">🌻</div>
+<div class="flower-decoration flower-3">💛</div>
+
+<div class="container-card">
+    <div class="romantic-header">
+        <div class="greetings-container">
+            <div class="greetings" id="greetingText"></div>
+            <span class="greetings-cursor" id="greetingCursor"></span>
+        </div>
     </div>
+
+    <div class="message-box">
+        <p class="message-text">
+            No te pude dar tus flores amarillas este 21 de septiembre,
+            pero quería que supieras que siempre estás en mis pensamientos.
+            Este pequeño detalle es para recordarte lo especial que eres para mí.
+        </p>
+    </div>
+
     <div class="description">
-        <span>ESTE DETALLE ES PARA TI :)</span>
+        Espero que esto te traiga una sonrisa y sepas que te amo mucho 💛
     </div>
-    <div class="button">
-        <button class="botones" id="btnFlower">
-            <a href="flower.html" style="color: #fff;">CLICK AQUÍ</a>
+
+    <div class="button mt-4">
+        <button class="btn btn-romantic" id="btnFlower">
+            Descubre Tu Sorpresa 🌸
         </button>
     </div>
+</div>
 
-    <script>
-        const button = document.getElementById('btnFlower');
-        const link = button.querySelector('a');
+<script>
+    // Efecto de escritura para el saludo
+    const greetingText = document.getElementById('greetingText');
+    const greetingCursor = document.getElementById('greetingCursor');
+    const text = "Hola Amorcito 🤍";
+    let index = 0;
 
-        button.addEventListener('click', (e) => {
-            // Cambiar el href para agregar ?play=true
-            link.href = 'flower.html?play=true';
-        });
-    </script>
+    function typeWriter() {
+        if (index < text.length) {
+            greetingText.innerHTML += text.charAt(index);
+            index++;
+            setTimeout(typeWriter, 200);
+        } else {
+            // Una vez completado el texto, hacer que el cursor parpadee más suavemente
+            greetingCursor.style.animation = "blink 1.5s infinite";
+        }
+    }
+
+    // Iniciar el efecto de escritura cuando la página cargue
+    window.addEventListener('load', () => {
+        setTimeout(typeWriter, 500);
+    });
+
+    const button = document.getElementById('btnFlower');
+
+    button.addEventListener('click', (e) => {
+        // Agregar efecto de click
+        button.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            button.style.transform = '';
+        }, 150);
+
+        // Redirigir después de un pequeño delay
+        setTimeout(() => {
+            window.location.href = 'flower.html?play=true';
+        }, 300);
+    });
+</script>
 </body>
 </html>
